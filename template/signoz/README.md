@@ -45,7 +45,7 @@ SigNoz stores users, organizations, sessions, and application settings in SQLite
 
 **Version Alignment:**
 
-The component images and configuration follow the official SigNoz `v0.117.0` Docker deployment bundle, including SigNoz OpenTelemetry Collector `v0.144.2`, ClickHouse `25.5.6`, and ZooKeeper `3.7.1`.
+The component images and configuration follow the official SigNoz `v0.146.0` Docker deployment bundle, including SigNoz OpenTelemetry Collector `v0.144.14`, ClickHouse `25.5.6`, and ZooKeeper `3.7.1`.
 
 **License Information:**
 

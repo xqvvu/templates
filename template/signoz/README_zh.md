@@ -45,7 +45,7 @@ SigNoz 使用自身持久卷中的 SQLite 保存用户、组织、会话和应�
 
 **版本对应关系：**
 
-组件镜像和配置来自官方 SigNoz `v0.117.0` Docker 部署包，其中包含 SigNoz OpenTelemetry Collector `v0.144.2`、ClickHouse `25.5.6` 和 ZooKeeper `3.7.1`。
+组件镜像和配置来自官方 SigNoz `v0.146.0` Docker 部署包，其中包含 SigNoz OpenTelemetry Collector `v0.144.14`、ClickHouse `25.5.6` 和 ZooKeeper `3.7.1`。
 
 **许可证信息：**
 

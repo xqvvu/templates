@@ -4,7 +4,7 @@ metadata:
   name: signoz-topology
 spec:
   appName: signoz
-  source: https://raw.githubusercontent.com/SigNoz/signoz/v0.117.0/deploy/docker/docker-compose.yaml
+  source: https://raw.githubusercontent.com/SigNoz/signoz/v0.146.0/deploy/docker/docker-compose.yaml
   resources:
     - kind: StatefulSet
       name: ${{ defaults.app_name }}-zookeeper-0
