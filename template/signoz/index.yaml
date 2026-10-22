@@ -536,23 +536,25 @@ spec:
         args:
         - echo 'Waiting for ClickHouse ready...' && /signoz-otel-collector migrate ready --clickhouse-dsn=tcp://${{ defaults.app_name }}-clickhouse:9000 --timeout=15m && echo 'ClickHouse ready! Running bootstrap...' && /signoz-otel-collector migrate bootstrap --clickhouse-dsn=tcp://${{ defaults.app_name }}-clickhouse:9000 --clickhouse-cluster=cluster && echo 'Running sync migrations...' && /signoz-otel-collector migrate sync up --clickhouse-dsn=tcp://${{ defaults.app_name }}-clickhouse:9000 --clickhouse-cluster=cluster && echo 'Running async migrations...' && /signoz-otel-collector migrate async up --clickhouse-dsn=tcp://${{ defaults.app_name }}-clickhouse:9000 --clickhouse-cluster=cluster && echo 'Migrations completed! Starting collector...' && exec /signoz-otel-collector --config=/conf/otel-collector-config.yaml
         ports:
+        - containerPort: 4318
+          name: otlp-http
         - containerPort: 4317
-          name: http
+          name: otlp-grpc
         startupProbe:
           tcpSocket:
-            port: http
+            port: otlp-http
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 30
         readinessProbe:
           tcpSocket:
-            port: http
+            port: otlp-http
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 6
         livenessProbe:
           tcpSocket:
-            port: http
+            port: otlp-http
           periodSeconds: 30
           timeoutSeconds: 5
           failureThreshold: 5
@@ -574,7 +576,11 @@ metadata:
     cloud.sealos.io/app-deploy-manager: ${{ defaults.app_name }}-collector
 spec:
   ports:
-  - name: http
+  - name: otlp-http
+    port: 4318
+    targetPort: 4318
+    protocol: TCP
+  - name: otlp-grpc
     port: 4317
     targetPort: 4317
     protocol: TCP
