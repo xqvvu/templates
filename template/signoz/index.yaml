@@ -194,6 +194,48 @@ data:
         </macros>
         <user_defined_executable_functions_config>/etc/clickhouse-server/functions.yaml</user_defined_executable_functions_config>
         <user_scripts_path>/var/lib/clickhouse/user_scripts/</user_scripts_path>
+        <!-- Bound ClickHouse's own diagnostic logs. Without a TTL these grow without
+             limit and can easily exceed the size of the actual telemetry data.
+             Mirrors the official SigNoz Foundry deployment configuration. -->
+        <trace_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </trace_log>
+        <processors_profile_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </processors_profile_log>
+        <query_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </query_log>
+        <query_thread_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </query_thread_log>
+        <query_views_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </query_views_log>
+        <query_metric_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </query_metric_log>
+        <part_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </part_log>
+        <text_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </text_log>
+        <metric_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </metric_log>
+        <asynchronous_metric_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </asynchronous_metric_log>
+        <error_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </error_log>
+        <background_schedule_pool_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </background_schedule_pool_log>
+        <aggregated_zookeeper_log>
+            <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+        </aggregated_zookeeper_log>
     </clickhouse>
   vn-etcvn-clickhousevn-servervn-usersvn-dvn-defaultvn-xml: |-
     <clickhouse>
